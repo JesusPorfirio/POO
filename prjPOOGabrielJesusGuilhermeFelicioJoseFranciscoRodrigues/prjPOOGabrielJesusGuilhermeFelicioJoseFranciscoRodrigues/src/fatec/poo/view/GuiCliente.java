@@ -105,6 +105,11 @@ public class GuiCliente extends javax.swing.JFrame {
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Inserir.png"))); // NOI18N
         btnIncluir.setText("Incluir");
@@ -254,6 +259,10 @@ public class GuiCliente extends javax.swing.JFrame {
     private void cbxUfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxUfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxUfActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
