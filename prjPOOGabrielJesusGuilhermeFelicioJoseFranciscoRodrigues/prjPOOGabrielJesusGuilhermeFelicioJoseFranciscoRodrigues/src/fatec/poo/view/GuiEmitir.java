@@ -29,9 +29,9 @@ public class GuiEmitir extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNumPedido = new javax.swing.JLabel();
+        lblData = new javax.swing.JLabel();
+        lblFormaPagamento = new javax.swing.JLabel();
         txtNumPedido = new javax.swing.JTextField();
         txtData = new javax.swing.JFormattedTextField();
         cbxFormaPagamento = new javax.swing.JComboBox<>();
@@ -53,8 +53,8 @@ public class GuiEmitir extends javax.swing.JFrame {
         jTextField8 = new javax.swing.JTextField();
         txtVlrPedido = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        txtCliCpf = new javax.swing.JFormattedTextField();
+        lblCpfCli = new javax.swing.JLabel();
+        txtCpfCli = new javax.swing.JFormattedTextField();
         btnConsultaCpfCli = new javax.swing.JButton();
         txtRCliConsul = new javax.swing.JTextField();
         Jpanel = new javax.swing.JPanel();
@@ -67,11 +67,11 @@ public class GuiEmitir extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pedido"));
 
-        jLabel1.setText("Numero do Pedido");
+        lblNumPedido.setText("Numero do Pedido");
 
-        jLabel2.setText("Data do Pedido");
+        lblData.setText("Data do Pedido");
 
-        jLabel3.setText("Forma de Pagamento");
+        lblFormaPagamento.setText("Forma de Pagamento");
 
         txtData.setEnabled(false);
 
@@ -91,17 +91,17 @@ public class GuiEmitir extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel1)
+                .addComponent(lblNumPedido)
                 .addGap(18, 18, 18)
                 .addComponent(txtNumPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnConsultarPedido)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -111,9 +111,9 @@ public class GuiEmitir extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
+                    .addComponent(lblNumPedido)
+                    .addComponent(lblData)
+                    .addComponent(lblFormaPagamento)
                     .addComponent(cbxFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarPedido)
@@ -254,10 +254,10 @@ public class GuiEmitir extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados cliente"));
 
-        jLabel4.setText("Cpf Cliente");
+        lblCpfCli.setText("Cpf Cliente");
 
         try {
-            txtCliCpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtCpfCli.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -275,9 +275,9 @@ public class GuiEmitir extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(lblCpfCli)
                 .addGap(18, 18, 18)
-                .addComponent(txtCliCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnConsultaCpfCli)
                 .addGap(18, 18, 18)
@@ -293,8 +293,8 @@ public class GuiEmitir extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(btnConsultaCpfCli)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtCliCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblCpfCli)
+                            .addComponent(txtCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -403,11 +403,7 @@ public class GuiEmitir extends javax.swing.JFrame {
     private javax.swing.JButton btnRemoverItem;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<String> cbxFormaPagamento;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -418,10 +414,14 @@ public class GuiEmitir extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JLabel lblCpfCli;
+    private javax.swing.JLabel lblData;
+    private javax.swing.JLabel lblFormaPagamento;
+    private javax.swing.JLabel lblNumPedido;
     private javax.swing.JTable tblProduto;
-    private javax.swing.JFormattedTextField txtCliCpf;
     private javax.swing.JFormattedTextField txtCodProd;
     private javax.swing.JTextField txtConsultaProd;
+    private javax.swing.JFormattedTextField txtCpfCli;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtNumPedido;
     private javax.swing.JTextField txtQtdeVendProd;
