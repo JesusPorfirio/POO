@@ -82,7 +82,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtData" min="-2" pref="107" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="lblFormaPagamento" max="32767" attributes="0"/>
+                  <Component id="lblFormaPagamento" pref="118" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cbxFormaPagamento" min="-2" pref="103" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -188,24 +188,23 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="lblCodProd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtCodProd" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                              <Component id="btnAdicionarItem" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="txtCodProd" min="-2" pref="157" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnConsultaProd" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnRemoverItem" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnConsultaProd" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
                                   <Component id="txtConsultaProd" min="-2" pref="101" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="lblQtdeVend" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="txtQtdeVendProd" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnAdicionarItem" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnRemoverItem" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -392,6 +391,7 @@
             <TitledBorder title="Dados cliente"/>
           </Border>
         </Property>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
 
       <Layout>
@@ -403,7 +403,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtCpfCli" min="-2" pref="157" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="btnConsultaCpfCli" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnConsultaCli" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="txtConsulCli" min="-2" pref="280" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -417,7 +417,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="txtConsulCli" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                          <Component id="btnConsultaCpfCli" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnConsultaCli" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                               <Component id="lblCpfCli" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCpfCli" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -442,7 +442,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnConsultaCpfCli">
+        <Component class="javax.swing.JButton" name="btnConsultaCli">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/fatec/poo/view/icons/icon/Consultar.png"/>
@@ -450,7 +450,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaCpfCliActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaCliActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtConsulCli">
@@ -473,6 +473,8 @@
             <TitledBorder title="Dados Vendedor"/>
           </Border>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
@@ -485,11 +487,11 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblCpfVend" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txCpfVend" min="-2" pref="157" max="-2" attributes="0"/>
+                  <Component id="txtCpfVend" min="-2" pref="157" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="btnConsultaCpfVend" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnConsultaVend" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtConsultaCpfVend" min="-2" pref="280" max="-2" attributes="0"/>
+                  <Component id="txtConsulVend" min="-2" pref="280" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -499,11 +501,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtConsultaCpfVend" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnConsultaCpfVend" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtConsulVend" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnConsultaVend" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="lblCpfVend" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txCpfVend" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtCpfVend" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -517,15 +519,18 @@
             <Property name="text" type="java.lang.String" value="Cpf Vendedor"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnConsultaCpfVend">
+        <Component class="javax.swing.JButton" name="btnConsultaVend">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/fatec/poo/view/icons/icon/Consultar.png"/>
             </Property>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnConsultaVendActionPerformed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtConsultaCpfVend">
+        <Component class="javax.swing.JTextField" name="txtConsulVend">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -536,7 +541,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txCpfVend">
+        <Component class="javax.swing.JFormattedTextField" name="txtCpfVend">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
               <Format format="###.###.###-##" subtype="-1" type="5"/>
