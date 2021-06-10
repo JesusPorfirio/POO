@@ -36,9 +36,9 @@ public class GuiEmitir extends javax.swing.JFrame {
         lblData = new javax.swing.JLabel();
         lblFormaPagamento = new javax.swing.JLabel();
         txtNumPedido = new javax.swing.JTextField();
-        txtData = new javax.swing.JFormattedTextField();
         cbxFormaPagamento = new javax.swing.JComboBox<>();
         btnConsultarPedido = new javax.swing.JButton();
+        txtData = new javax.swing.JFormattedTextField();
         btnSair = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         lblCodProd = new javax.swing.JLabel();
@@ -65,6 +65,9 @@ public class GuiEmitir extends javax.swing.JFrame {
         btnConsultaVend = new javax.swing.JButton();
         txtConsulVend = new javax.swing.JTextField();
         txtCpfVend = new javax.swing.JFormattedTextField();
+        btnExcluir = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnIncluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,8 +79,6 @@ public class GuiEmitir extends javax.swing.JFrame {
 
         lblFormaPagamento.setText("Forma de Pagamento");
 
-        txtData.setEnabled(false);
-
         cbxFormaPagamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A vista", "A prazo", "Parcelado", " " }));
         cbxFormaPagamento.setEnabled(false);
 
@@ -85,6 +86,14 @@ public class GuiEmitir extends javax.swing.JFrame {
         btnConsultarPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarPedidoActionPerformed(evt);
+            }
+        });
+
+        txtData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM))));
+        txtData.setEnabled(false);
+        txtData.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDataFocusLost(evt);
             }
         });
 
@@ -102,9 +111,9 @@ public class GuiEmitir extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -135,6 +144,8 @@ public class GuiEmitir extends javax.swing.JFrame {
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Itens Pedido"));
 
         lblCodProd.setText("Codigo do Produto");
+
+        txtCodProd.setEnabled(false);
 
         btnConsultaProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
         btnConsultaProd.setEnabled(false);
@@ -208,8 +219,7 @@ public class GuiEmitir extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(btnAdicionarItem)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnRemoverItem)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(btnRemoverItem))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,6 +275,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpfCli.setEnabled(false);
 
         btnConsultaCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
         btnConsultaCli.setEnabled(false);
@@ -309,7 +320,6 @@ public class GuiEmitir extends javax.swing.JFrame {
 
         Jpanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Vendedor"));
         Jpanel.setToolTipText("");
-        Jpanel.setEnabled(false);
 
         lblCpfVend.setText("Cpf Vendedor");
 
@@ -330,6 +340,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpfVend.setEnabled(false);
 
         javax.swing.GroupLayout JpanelLayout = new javax.swing.GroupLayout(Jpanel);
         Jpanel.setLayout(JpanelLayout);
@@ -359,6 +370,23 @@ public class GuiEmitir extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Remover.png"))); // NOI18N
+        btnExcluir.setText("Excluir");
+        btnExcluir.setEnabled(false);
+
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Alterar.png"))); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.setEnabled(false);
+
+        btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Inserir.png"))); // NOI18N
+        btnIncluir.setText("Incluir");
+        btnIncluir.setEnabled(false);
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -372,6 +400,12 @@ public class GuiEmitir extends javax.swing.JFrame {
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnIncluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAlterar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnExcluir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSair)))
                 .addContainerGap())
         );
@@ -387,7 +421,11 @@ public class GuiEmitir extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addComponent(btnSair)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSair)
+                    .addComponent(btnExcluir)
+                    .addComponent(btnAlterar)
+                    .addComponent(btnIncluir))
                 .addContainerGap())
         );
 
@@ -401,7 +439,7 @@ public class GuiEmitir extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPedidoActionPerformed
-int codigo;
+    int codigo;
         Boolean eInteiro = true;
         try{                                                   //tratamento de erro para número inteiro (se der erro na conversão nao é inteiro) 
             codigo = Integer.parseInt(txtNumPedido.getText());                
@@ -422,17 +460,19 @@ int codigo;
             }else{
                 posPedido = -1;// não achou
             }    
-            if(posPedido <0){
+            if(posPedido >0){
                 btnConsultarPedido.setEnabled(false);
                 txtCodProd.setEnabled(true);
                 btnConsultaProd.setEnabled(true);
                 btnAdicionarItem.setEnabled(true);
                 btnRemoverItem.setEnabled(true);
-                
-                
             }
             else{
-                
+                btnConsultarPedido.setEnabled(false);
+                txtConsulCli.setEnabled(true);
+                btnConsultaCli.setEnabled(true);
+                txtData.setEnabled(true);
+                txtData.requestFocus();
             }
         }        
     }//GEN-LAST:event_btnConsultarPedidoActionPerformed
@@ -507,6 +547,33 @@ int codigo;
         }
     }//GEN-LAST:event_btnConsultaVendActionPerformed
 
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void txtDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataFocusLost
+        int data = Integer.parseInt(txtData.getText());
+        int ano = data % 10000;
+        int mes = (data/10000)% 100;
+        int dia = data/1000000;
+                if( ano >= 1900 && ano <= 2100 && dia > 0 && dia <= 31 && mes > 0 && mes <=12){
+                    if((mes == 4 && dia >30)| (mes == 6 && dia >30)| (mes == 9 && dia >30)| (mes == 11 && dia >30)){
+                       JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
+                    }else{
+                       if((ano % 4 == 0 && mes == 2 && dia <= 29) | (ano % 4 != 0 && dia <=28)){
+                             Pedido pedido = new Pedido(txtNumPedido.getText(), txtData.getText());
+                            txtData.setEnabled(false);
+                            txtConsulCli.setEnabled(true);
+                            btnConsultaCli.setEnabled(true);
+                        }else{
+                           JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
+                       }
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
+                }
+    }//GEN-LAST:event_txtDataFocusLost
+
     /**
      * @param args the command line arguments
      */
@@ -515,10 +582,13 @@ int codigo;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Jpanel;
     private javax.swing.JButton btnAdicionarItem;
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnConsultaCli;
     private javax.swing.JButton btnConsultaProd;
     private javax.swing.JButton btnConsultaVend;
     private javax.swing.JButton btnConsultarPedido;
+    private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnRemoverItem;
     private javax.swing.JButton btnSair;
     private javax.swing.JComboBox<String> cbxFormaPagamento;
