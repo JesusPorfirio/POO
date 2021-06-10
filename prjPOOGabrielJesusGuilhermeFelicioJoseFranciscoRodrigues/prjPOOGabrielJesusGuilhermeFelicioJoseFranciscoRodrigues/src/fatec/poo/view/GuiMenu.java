@@ -108,7 +108,7 @@ public class GuiMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientesActionPerformed
-        new GuiCliente(cadClientes).setVisible(true);
+        new GuiCliente(cadCliVend, cadCliente).setVisible(true);
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
@@ -169,7 +169,7 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuPedido;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     // End of variables declaration//GEN-END:variables
-    private ArrayList<Cliente> cadClientes = new ArrayList<Cliente>();
+    private ArrayList<Cliente> cadCliente = new ArrayList<Cliente>();
     private ArrayList<Produto> cadProd = new ArrayList <Produto>();
     private ArrayList<Vendedor> cadVendedores = new ArrayList<Vendedor>();
     private ArrayList<Pessoa> cadCliVend = new ArrayList<Pessoa>();
