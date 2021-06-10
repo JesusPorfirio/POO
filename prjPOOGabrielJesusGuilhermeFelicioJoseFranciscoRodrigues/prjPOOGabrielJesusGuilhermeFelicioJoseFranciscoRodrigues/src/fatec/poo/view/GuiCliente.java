@@ -6,7 +6,9 @@
 package fatec.poo.view;
 
 import fatec.poo.model.Cliente;
+import fatec.poo.model.Pessoa;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,11 +16,10 @@ import java.util.ArrayList;
  */
 public class GuiCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GuiCliente
-     */
-    public GuiCliente(ArrayList<Cliente> cadClientes){
+    public GuiCliente(ArrayList<Pessoa> cadCliVend, ArrayList<Cliente> cadCliente){
         initComponents();
+        cadastroP = cadCliVend;
+        cadastroC = cadCliente;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -96,6 +97,7 @@ public class GuiCliente extends javax.swing.JFrame {
 
         txtLimDis.setEnabled(false);
 
+        cbxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "RO", "AC", "AM", "RR", "PA", "AP", "TO", "MA", "PI", "CE", "RN", "PB", "PE", "AL", "SE", "BA", "MG", "ES", "RJ", "SP", "PR", "SC", "RS", "MS", "MT", "GO", "DF" }));
         cbxUf.setEnabled(false);
         cbxUf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,14 +116,29 @@ public class GuiCliente extends javax.swing.JFrame {
         btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Inserir.png"))); // NOI18N
         btnIncluir.setText("Incluir");
         btnIncluir.setEnabled(false);
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Remover.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -262,7 +279,158 @@ public class GuiCliente extends javax.swing.JFrame {
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         // TODO add your handling code here:
+        if (!Pessoa.validarCPF(txtCpf.getText())) {
+            JOptionPane.showMessageDialog(null, "CPF invalido!",
+                                        "Erro", JOptionPane.WARNING_MESSAGE);
+            txtCpf.requestFocus();
+        } else {
+            int x;
+            for (x = 0; x < cadastroP.size(); x++) {
+                if (cadastroP.get(x).getCpf().equals(txtCpf.getText())/* &&
+                        cadastroP.get(x) instanceof Cliente*/) {
+                    break;
+                }
+            }
+            
+            if (x < cadastroP.size()) {
+                posPessoa = x;
+            } else {
+                posPessoa = -1;
+            }
+            if (posPessoa >= 0) {
+                txtNome.setText(cadastroP.get(posPessoa).getNome());
+                txtEndereco.setText(cadastroP.get(posPessoa).getEndereco());
+                txtCidade.setText(cadastroP.get(posPessoa).getCidade());
+                cbxUf.setSelectedItem(cadastroP.get(posPessoa).getUf());
+                txtDDDTelefone.setText(cadastroP.get(posPessoa).getDdd());
+                txtTelefone.setText(cadastroP.get(posPessoa).getTelefon());
+                txtCep.setText(cadastroP.get(posPessoa).getCep());
+                txtLimCred.setText(String.valueOf(((Cliente)cadastroP.get(posPessoa)).getLimiteCred()));
+                lblLimDisp.setText(String.valueOf(((Cliente)cadastroP.get(posPessoa)).getLimiteDisp()));
+                limiteUtilizado = ((Cliente)cadastroP.get(posPessoa)).getLimiteCred() - ((Cliente)cadastroP.get(posPessoa)).getLimiteDisp();
+                btnAlterar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+            } else {
+                btnIncluir.setEnabled(true);
+            }
+            btnConsultar.setEnabled(false);
+            txtCpf.setEnabled(false);
+            txtNome.setEnabled(true);
+            txtEndereco.setEnabled(true);
+            txtCidade.setEnabled(true);
+            cbxUf.setEnabled(true);
+            txtDDDTelefone.setEnabled(true);
+            txtTelefone.setEnabled(true);
+            txtCep.setEnabled(true);
+            txtLimCred.setEnabled(true);
+            txtNome.requestFocus();
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        // TODO add your handling code here:
+        Pessoa cliente = new Cliente(txtCpf.getText(),
+                                    txtNome.getText(),
+                                    Double.parseDouble(txtLimCred.getText()));
+        cliente.setEndereco(txtEndereco.getText());
+        cliente.setCidade(txtCidade.getText());
+        cliente.setUf(cbxUf.getSelectedItem().toString());
+        cliente.setCep(txtCep.getText());
+        cliente.setDdd(txtDDDTelefone.getText());
+        cliente.setTelefone(txtTelefone.getText());
+        
+        cadastroP.add(cliente);
+        
+        txtCpf.setValue(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(0);
+        txtDDDTelefone.setText(null);
+        txtTelefone.setText(null);
+        txtCep.setText(null);
+        txtLimCred.setText(null);
+        btnConsultar.setEnabled(true);
+        btnIncluir.setEnabled(false);
+        txtCpf.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDDDTelefone.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimCred.setEnabled(false);
+        txtCpf.requestFocus();
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        // TODO add your handling code here:
+        if (posPessoa >= 0) {
+            cadastroP.remove(posPessoa);
+            posPessoa = -1;
+        }
+        txtCpf.setValue(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(0);
+        txtDDDTelefone.setText(null);
+        txtTelefone.setText(null);
+        txtCep.setText(null);
+        txtLimCred.setText(null);
+        lblLimDisp.setText(null);
+        btnConsultar.setEnabled(true);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        txtCpf.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDDDTelefone.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimCred.setEnabled(false);
+        txtCpf.requestFocus();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+        cadastroP.get(posPessoa).setNome(txtNome.getText());
+        cadastroP.get(posPessoa).setEndereco(txtEndereco.getText());
+        cadastroP.get(posPessoa).setCidade(txtCidade.getText());
+        cadastroP.get(posPessoa).setUf(cbxUf.getSelectedItem().toString());
+        cadastroP.get(posPessoa).setDdd(txtDDDTelefone.getText());
+        cadastroP.get(posPessoa).setTelefone(txtTelefone.getText());
+        cadastroP.get(posPessoa).setCep(txtCep.getText());
+        ((Cliente)cadastroP.get(posPessoa)).setLimiteCred(Double.parseDouble(txtLimCred.getText()));
+        ((Cliente)cadastroP.get(posPessoa)).setLimiteDisp(Double.parseDouble(txtLimCred.getText()) - limiteUtilizado);
+        
+        txtCpf.setValue(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(0);
+        txtDDDTelefone.setText(null);
+        txtTelefone.setText(null);
+        txtCep.setText(null);
+        txtLimCred.setText(null);
+        lblLimDisp.setText(null);
+        btnConsultar.setEnabled(true);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        txtCpf.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDDDTelefone.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimCred.setEnabled(false);
+        txtCpf.requestFocus();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,4 +459,8 @@ public class GuiCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<Pessoa> cadastroP = new ArrayList<Pessoa>();
+    private ArrayList<Cliente> cadastroC = new ArrayList<Cliente>();
+    private int posPessoa;
+    private double limiteUtilizado;
 }

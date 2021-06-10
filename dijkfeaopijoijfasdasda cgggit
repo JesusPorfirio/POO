@@ -1,0 +1,201 @@
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/built-jar.properties[m
+[1mindex 4231889,c6606ec..0000000[m
+[1m--- a/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/built-jar.properties[m
+[1m+++ b/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/built-jar.properties[m
+[36m@@@ -1,4 -1,4 +1,8 @@@[m
+[32m++<<<<<<< HEAD[m
+[32m +#Thu, 10 Jun 2021 17:32:08 -0300[m
+[32m++=======[m
+[32m+ #Thu, 10 Jun 2021 18:24:09 -0300[m
+[32m++>>>>>>> branchJosef[m
+  [m
+  [m
+[31m- C\:\\Users\\gfeli\\Documents\\GitHub\\poo\\POO\\prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues\\prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues=[m
+[32m+ G\:\\POO\\Trab4\\POO\\prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues\\prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues=[m
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$1.class[m
+[1mindex 612a801,3e09566..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$2.class[m
+[1mindex c730e8b,ccf17a7..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$3.class[m
+[1mindex b1b9545,2c7d0d9..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$4.class[m
+[1mindex 6c6dcbb,ee9e1ae..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$5.class[m
+[1mindex 344cab8,29bc80d..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$6.class[m
+[1mindex 8cc695f,9716043..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir$7.class[m
+[1mindex 333a54f,e555360..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir.class[m
+[1mindex 2827b05,f8c8a3b..0000000[m
+Binary files differ
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/nbproject/private/private.xml[m
+[1mindex 2059ca3,e2f65fa..0000000[m
+[1m--- a/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/nbproject/private/private.xml[m
+[1m+++ b/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/nbproject/private/private.xml[m
+[36m@@@ -3,8 -3,12 +3,17 @@@[m
+      <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>[m
+      <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">[m
+          <group>[m
+[32m++<<<<<<< HEAD[m
+[32m +            <file>file:/C:/Users/gfeli/Documents/GitHub/poo/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/model/Pedido.java</file>[m
+[32m +            <file>file:/C:/Users/gfeli/Documents/GitHub/poo/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/view/GuiEmitir.java</file>[m
+[32m++=======[m
+[32m+             <file>file:/G:/POO/Trab4/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/view/GuiEmitir.java</file>[m
+[32m+             <file>file:/G:/POO/Trab4/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/model/ItemPedido.java</file>[m
+[32m+             <file>file:/G:/POO/Trab4/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/view/GuiCliente.java</file>[m
+[32m+             <file>file:/G:/POO/Trab4/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/model/Pedido.java</file>[m
+[32m+             <file>file:/G:/POO/Trab4/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/model/Produto.java</file>[m
+[32m+             <file>file:/G:/POO/Trab4/POO/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/model/Cliente.java</file>[m
+[32m++>>>>>>> branchJosef[m
+          </group>[m
+      </open-files>[m
+  </project-private>[m
+[1mdiff --cc prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/view/GuiEmitir.java[m
+[1mindex fc835b9,c0c01dd..0000000[m
+[1m--- a/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/view/GuiEmitir.java[m
+[1m+++ b/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/src/fatec/poo/view/GuiEmitir.java[m
+[36m@@@ -111,9 -106,9 +115,15 @@@[m [mpublic class GuiEmitir extends javax.sw[m
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)[m
+                  .addComponent(lblData, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)[m
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)[m
+[32m++<<<<<<< HEAD[m
+[32m +                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)[m
+[32m +                .addGap(18, 18, 18)[m
+[32m +                .addComponent(lblFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)[m
+[32m++=======[m
+[32m+                 .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)[m
+[32m+                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)[m
+[32m+                 .addComponent(lblFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 118, Short.MAX_VALUE)[m
+[32m++>>>>>>> branchJosef[m
+                  .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)[m
+                  .addComponent(cbxFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)[m
+                  .addContainerGap())[m
+[36m@@@ -145,10 -140,13 +155,15 @@@[m
+  [m
+          lblCodProd.setText("Codigo do Produto");[m
+  [m
+[32m +        txtCodProd.setEnabled(false);[m
+[32m +[m
+          btnConsultaProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N[m
+          btnConsultaProd.setEnabled(false);[m
+[32m+         btnConsultaProd.addActionListener(new java.awt.event.ActionListener() {[m
+[32m+             public void actionPerformed(java.awt.event.ActionEvent evt) {[m
+[32m+                 btnConsultaProdActionPerformed(evt);[m
+[32m+             }[m
+[32m+         });[m
+  [m
+          txtConsultaProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));[m
+          txtConsultaProd.setEnabled(false);[m
+[36m@@@ -547,32 -520,73 +567,102 @@@[m
+          }[m
+      }//GEN-LAST:event_btnConsultaVendActionPerformed[m
+  [m
+[32m++<<<<<<< HEAD[m
+[32m +    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed[m
+[32m +        // TODO add your handling code here:[m
+[32m +    }//GEN-LAST:event_btnIncluirActionPerformed[m
+[32m +[m
+[32m +    private void txtDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataFocusLost[m
+[32m +        int data = Integer.parseInt(txtData.getText());[m
+[32m +        int ano = data % 10000;[m
+[32m +        int mes = (data/10000)% 100;[m
+[32m +        int dia = data/1000000;[m
+[32m +                if( ano >= 1900 && ano <= 2100 && dia > 0 && dia <= 31 && mes > 0 && mes <=12){[m
+[32m +                    if((mes == 4 && dia >30)| (mes == 6 && dia >30)| (mes == 9 && dia >30)| (mes == 11 && dia >30)){[m
+[32m +                       JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);[m
+[32m +                    }else{[m
+[32m +                       if((ano % 4 == 0 && mes == 2 && dia <= 29) | (ano % 4 != 0 && dia <=28)){[m
+[32m +                             Pedido pedido = new Pedido(txtNumPedido.getText(), txtData.getText());[m
+[32m +                            txtData.setEnabled(false);[m
+[32m +                            txtConsulCli.setEnabled(true);[m
+[32m +                            btnConsultaCli.setEnabled(true);[m
+[32m +                        }else{[m
+[32m +                           JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);[m
+[32m +                       }[m
+[32m +                    }[m
+[32m +                }else{[m
+[32m +                    JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);[m
+[32m +                }[m
+[32m +    }//GEN-LAST:event_txtDataFocusLost[m
+[32m++=======[m
+[32m+     private void btnConsultaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaProdActionPerformed[m
+[32m+         String codProduto = txtCodProd.getText();[m
+[32m+         int x;[m
+[32m+         for(x=0; x<cadProd.size(); x++){[m
+[32m+             if(cadProd.get(x).getCodigo().equals(codProduto)){[m
+[32m+                 break;[m
+[32m+             }[m
+[32m+         }[m
+[32m+         [m
+[32m+         if(x < cadProd.size()){[m
+[32m+             posProd = x;[m
+[32m+         }else{[m
+[32m+             posProd = -1;[m
+[32m+         }[m
+[32m+         [m
+[32m+         if(posProd >= 0){[m
+[32m+             txtConsultaProd.setText(cadProd.get(x).getDescricao());[m
+[32m+             btnAdicionarItem.setEnabled(true);[m
+[32m+             btnRemoverItem.setEnabled(true);[m
+[32m+             txtQtdeVendProd.setEnabled(true);[m
+[32m+             txtCodProd.setEnabled(false);[m
+[32m+         }else{[m
+[32m+             JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "aviso", JOptionPane.ERROR_MESSAGE);[m
+[32m+         }[m
+[32m+     }//GEN-LAST:event_btnConsultaProdActionPerformed[m
+[32m+ [m
+[32m+     private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed[m
+[32m+         Double qtdVendida = Double.valueOf(txtQtdeVendProd.getText());[m
+[32m+         int x;[m
+[32m+         if(qtdVendida > 0){[m
+[32m+             for(x=0; x<cadProd.size(); x++){[m
+[32m+                 if(cadProd.get(x).getCodigo().equals(txtCodProd.getText())){[m
+[32m+                     break;[m
+[32m+                 }[m
+[32m+             }[m
+[32m+             if(cadProd.get(x).getQtdeEstoque() >= qtdVendida){[m
+[32m+                 ItemPedido novoItem = new ItemPedido(1, qtdVendida, cadProd.get(x));[m
+[32m+                 for(x=0; x<cadCliVend.size(); x++){[m
+[32m+                     if(txtCpfCli.getText().equals(cadCliVend.get(x).getCpf())){[m
+[32m+                         if(cadCliVend.get(x) instanceof Cliente){[m
+[32m+                             break;[m
+[32m+                         }[m
+[32m+              [m
+[32m+                     }[m
+[32m+                 }[m
+[32m+                 Double valorItem = (novoItem.getProduto().getPreco()) * qtdVendida;[m
+[32m+                 if(valorItem <= ((Cliente)cadCliVend.get(x)).getLimiteCred()){[m
+[32m+                     String listaItem [] = { (novoItem.getProduto().getCodigo()),[m
+[32m+                                              (novoItem.getProduto().getDescricao()),[m
+[32m+                                              String.valueOf((novoItem.getProduto().getPreco())),[m
+[32m+                                              txtQtdeVendProd.getText(),[m
+[32m+                                              String.valueOf(valorItem)};[m
+[32m+                     modTblProd.addRow(listaItem);[m
+[32m+                    [m
+[32m+                 }[m
+[32m+             }else{[m
+[32m+                 JOptionPane.showMessageDialog(null, "Quantidade solicitada maior que o estoque disponível", "aviso", JOptionPane.ERROR_MESSAGE);[m
+[32m+             }[m
+[32m+             [m
+[32m+         }else{[m
+[32m+             JOptionPane.showMessageDialog(null, "Favor inserir quantidade vendida válida", "aviso", JOptionPane.ERROR_MESSAGE);          [m
+[32m+         }[m
+[32m+         [m
+[32m+         [m
+[32m+         [m
+[32m+         [m
+[32m+     }//GEN-LAST:event_btnAdicionarItemActionPerformed[m
+[32m++>>>>>>> branchJosef[m
+  [m
+      /**[m
+       * @param args the command line arguments[m
+* Unmerged path prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/build/classes/fatec/poo/view/GuiEmitir.form
+* Unmerged path prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/prjPOOGabrielJesusGuilhermeFelicioJoseFranciscoRodrigues/dist/prjPOOGabrielJesusGuilhermeFelicio.jar

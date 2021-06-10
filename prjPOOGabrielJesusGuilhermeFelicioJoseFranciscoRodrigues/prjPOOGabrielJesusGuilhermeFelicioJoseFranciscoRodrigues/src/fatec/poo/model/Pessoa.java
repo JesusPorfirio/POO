@@ -125,5 +125,13 @@ public class Pessoa {
             return cpfValido;
         }
     }
+
+    public void setNome(String text) {
+        this.nome = nome;
+    }
+
+    public String getDdd() {
+        return ddd;
+    }
     
 }

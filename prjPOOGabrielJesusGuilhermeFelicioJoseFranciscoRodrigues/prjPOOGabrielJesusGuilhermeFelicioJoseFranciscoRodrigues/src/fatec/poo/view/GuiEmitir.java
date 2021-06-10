@@ -1,11 +1,14 @@
 package fatec.poo.view;
 
 import fatec.poo.model.Cliente;
+import fatec.poo.model.ItemPedido;
 import fatec.poo.model.Pedido;
 import fatec.poo.model.Pessoa;
 import fatec.poo.model.Vendedor;
+import fatec.poo.model.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,6 +23,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         initComponents();
         cadPedido = cadPedido;
         cadCliVend = cadCliVend;
+        modTblProd = (DefaultTableModel)tblProduto.getModel();
     }
 
     /**
@@ -149,6 +153,11 @@ public class GuiEmitir extends javax.swing.JFrame {
 
         btnConsultaProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
         btnConsultaProd.setEnabled(false);
+        btnConsultaProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaProdActionPerformed(evt);
+            }
+        });
 
         txtConsultaProd.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         txtConsultaProd.setEnabled(false);
@@ -160,6 +169,11 @@ public class GuiEmitir extends javax.swing.JFrame {
         btnAdicionarItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Inserir.png"))); // NOI18N
         btnAdicionarItem.setText("Adicionar Item");
         btnAdicionarItem.setEnabled(false);
+        btnAdicionarItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarItemActionPerformed(evt);
+            }
+        });
 
         btnRemoverItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Remover.png"))); // NOI18N
         btnRemoverItem.setText("Remover item");
@@ -469,7 +483,7 @@ public class GuiEmitir extends javax.swing.JFrame {
             }
             else{
                 btnConsultarPedido.setEnabled(false);
-                txtConsulCli.setEnabled(true);
+                txtCpfCli.setEnabled(true);
                 btnConsultaCli.setEnabled(true);
                 txtData.setEnabled(true);
                 txtData.requestFocus();
@@ -547,6 +561,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnConsultaVendActionPerformed
 
+
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIncluirActionPerformed
@@ -573,6 +588,75 @@ public class GuiEmitir extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
                 }
     }//GEN-LAST:event_txtDataFocusLost
+
+    private void btnConsultaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaProdActionPerformed
+        String codProduto = txtCodProd.getText();
+        int x;
+        for(x=0; x<cadProd.size(); x++){
+            if(cadProd.get(x).getCodigo().equals(codProduto)){
+                break;
+            }
+        }
+        
+        if(x < cadProd.size()){
+            posProd = x;
+        }else{
+            posProd = -1;
+        }
+        
+        if(posProd >= 0){
+            txtConsultaProd.setText(cadProd.get(x).getDescricao());
+            btnAdicionarItem.setEnabled(true);
+            btnRemoverItem.setEnabled(true);
+            txtQtdeVendProd.setEnabled(true);
+            txtCodProd.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "aviso", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnConsultaProdActionPerformed
+
+    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
+        Double qtdVendida = Double.valueOf(txtQtdeVendProd.getText());
+        int x;
+        if(qtdVendida > 0){
+            for(x=0; x<cadProd.size(); x++){
+                if(cadProd.get(x).getCodigo().equals(txtCodProd.getText())){
+                    break;
+                }
+            }
+            if(cadProd.get(x).getQtdeEstoque() >= qtdVendida){
+                ItemPedido novoItem = new ItemPedido(1, qtdVendida, cadProd.get(x));
+                for(x=0; x<cadCliVend.size(); x++){
+                    if(txtCpfCli.getText().equals(cadCliVend.get(x).getCpf())){
+                        if(cadCliVend.get(x) instanceof Cliente){
+                            break;
+                        }
+             
+                    }
+                }
+                Double valorItem = (novoItem.getProduto().getPreco()) * qtdVendida;
+                if(valorItem <= ((Cliente)cadCliVend.get(x)).getLimiteCred()){
+                    String listaItem [] = { (novoItem.getProduto().getCodigo()),
+                                             (novoItem.getProduto().getDescricao()),
+                                             String.valueOf((novoItem.getProduto().getPreco())),
+                                             txtQtdeVendProd.getText(),
+                                             String.valueOf(valorItem)};
+                    modTblProd.addRow(listaItem);
+                   
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Quantidade solicitada maior que o estoque disponível", "aviso", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Favor inserir quantidade vendida válida", "aviso", JOptionPane.ERROR_MESSAGE);          
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_btnAdicionarItemActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -619,8 +703,12 @@ public class GuiEmitir extends javax.swing.JFrame {
     private javax.swing.JTextField txtVlrPedido;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Pedido> cadPedido = new ArrayList<Pedido>();
-     private ArrayList<Pessoa> cadCliVend = new ArrayList<Pessoa>();
-     int posCli;
-     int posVend;
-     int posPedido;
+    private ArrayList<Pessoa> cadCliVend = new ArrayList<Pessoa>();
+    private ArrayList<Produto> cadProd = new ArrayList<Produto>();
+    private ArrayList<ItemPedido> cadItem = new ArrayList<ItemPedido>();
+    int posCli;
+    int posVend;
+    int posPedido;
+    int posProd;
+    DefaultTableModel modTblProd;
 }
