@@ -1,8 +1,11 @@
 package fatec.poo.view;
 
+import fatec.poo.model.Cliente;
 import fatec.poo.model.Pedido;
 import fatec.poo.model.Pessoa;
+import fatec.poo.model.Vendedor;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,13 +58,13 @@ public class GuiEmitir extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblCpfCli = new javax.swing.JLabel();
         txtCpfCli = new javax.swing.JFormattedTextField();
-        btnConsultaCpfCli = new javax.swing.JButton();
-        txtRCliConsul = new javax.swing.JTextField();
+        btnConsultaCli = new javax.swing.JButton();
+        txtConsulCli = new javax.swing.JTextField();
         Jpanel = new javax.swing.JPanel();
         lblCpfVend = new javax.swing.JLabel();
-        btnConsultaCpfVend = new javax.swing.JButton();
-        txtConsultaCpfVend = new javax.swing.JTextField();
-        txCpfVend = new javax.swing.JFormattedTextField();
+        btnConsultaVend = new javax.swing.JButton();
+        txtConsulVend = new javax.swing.JTextField();
+        txtCpfVend = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -101,7 +104,7 @@ public class GuiEmitir extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblFormaPagamento, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbxFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -191,22 +194,22 @@ public class GuiEmitir extends javax.swing.JFrame {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(lblCodProd)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAdicionarItem))
+                        .addComponent(txtCodProd, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnConsultaProd)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(btnRemoverItem)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(btnConsultaProd)
-                                .addGap(18, 18, 18)
                                 .addComponent(txtConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblQtdeVend)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtQtdeVendProd))))
+                                .addComponent(txtQtdeVendProd))
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(btnAdicionarItem)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRemoverItem)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,6 +256,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados cliente"));
+        jPanel1.setEnabled(false);
 
         lblCpfCli.setText("Cpf Cliente");
 
@@ -262,12 +266,17 @@ public class GuiEmitir extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        btnConsultaCpfCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
-        btnConsultaCpfCli.setEnabled(false);
+        btnConsultaCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
+        btnConsultaCli.setEnabled(false);
+        btnConsultaCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaCliActionPerformed(evt);
+            }
+        });
 
-        txtRCliConsul.setEditable(false);
-        txtRCliConsul.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtRCliConsul.setEnabled(false);
+        txtConsulCli.setEditable(false);
+        txtConsulCli.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtConsulCli.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -279,9 +288,9 @@ public class GuiEmitir extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(txtCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnConsultaCpfCli)
+                .addComponent(btnConsultaCli)
                 .addGap(18, 18, 18)
-                .addComponent(txtRCliConsul, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConsulCli, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -289,9 +298,9 @@ public class GuiEmitir extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtRCliConsul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtConsulCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnConsultaCpfCli)
+                        .addComponent(btnConsultaCli)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCpfCli)
                             .addComponent(txtCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -299,18 +308,25 @@ public class GuiEmitir extends javax.swing.JFrame {
         );
 
         Jpanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Vendedor"));
+        Jpanel.setToolTipText("");
+        Jpanel.setEnabled(false);
 
         lblCpfVend.setText("Cpf Vendedor");
 
-        btnConsultaCpfVend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
-        btnConsultaCpfVend.setEnabled(false);
+        btnConsultaVend.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Consultar.png"))); // NOI18N
+        btnConsultaVend.setEnabled(false);
+        btnConsultaVend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultaVendActionPerformed(evt);
+            }
+        });
 
-        txtConsultaCpfVend.setEditable(false);
-        txtConsultaCpfVend.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtConsultaCpfVend.setEnabled(false);
+        txtConsulVend.setEditable(false);
+        txtConsulVend.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtConsulVend.setEnabled(false);
 
         try {
-            txCpfVend.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+            txtCpfVend.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
@@ -323,11 +339,11 @@ public class GuiEmitir extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblCpfVend)
                 .addGap(18, 18, 18)
-                .addComponent(txCpfVend, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCpfVend, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnConsultaCpfVend)
+                .addComponent(btnConsultaVend)
                 .addGap(18, 18, 18)
-                .addComponent(txtConsultaCpfVend, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConsulVend, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         JpanelLayout.setVerticalGroup(
@@ -335,11 +351,11 @@ public class GuiEmitir extends javax.swing.JFrame {
             .addGroup(JpanelLayout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtConsultaCpfVend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultaCpfVend)
+                    .addComponent(txtConsulVend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultaVend)
                     .addGroup(JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblCpfVend)
-                        .addComponent(txCpfVend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtCpfVend, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -385,8 +401,111 @@ public class GuiEmitir extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarPedidoActionPerformed
-        
+int codigo;
+        Boolean eInteiro = true;
+        try{                                                   //tratamento de erro para número inteiro (se der erro na conversão nao é inteiro) 
+            codigo = Integer.parseInt(txtNumPedido.getText());                
+        }catch(NumberFormatException erroConversaoInt){   
+            JOptionPane.showMessageDialog(null, "Insira apenas valores inteiros", "aviso", JOptionPane.ERROR_MESSAGE);
+            txtNumPedido.requestFocus();
+            eInteiro = false;
+        }
+        if(eInteiro == true){// se o trataemento de erros deu certo o número é inteiro, então...
+            int x;
+            for(x=0; x<cadPedido.size();x++){
+                if(cadPedido.get(x).getNumero().equals(txtNumPedido.getText())){
+                    break;
+                }
+            }
+            if(x < cadPedido.size()){
+                posPedido = x;//achou
+            }else{
+                posPedido = -1;// não achou
+            }    
+            if(posPedido <0){
+                btnConsultarPedido.setEnabled(false);
+                txtCodProd.setEnabled(true);
+                btnConsultaProd.setEnabled(true);
+                btnAdicionarItem.setEnabled(true);
+                btnRemoverItem.setEnabled(true);
+                
+                
+            }
+            else{
+                
+            }
+        }        
     }//GEN-LAST:event_btnConsultarPedidoActionPerformed
+
+    private void btnConsultaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCliActionPerformed
+        String cpfCliente = txtCpfCli.getText();
+        int x;
+        if(Pessoa.validarCPF(cpfCliente)){
+        JOptionPane.showMessageDialog(null, "Número de CPF inválido", "aviso", JOptionPane.ERROR_MESSAGE);
+        }
+        else{      
+            for(x=0; x<cadCliVend.size(); x++){
+                if(cpfCliente.equals(cadCliVend.get(x).getCpf())){
+                    if(cadCliVend.get(x) instanceof Cliente){
+                        break;
+                    }else if(cadCliVend.get(x) instanceof Vendedor){
+                        JOptionPane.showMessageDialog(null, "O número de cpf digitado pertence a um vendedor", "aviso", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+            if(x < cadCliVend.size()){
+                posCli = x;
+            }else{
+                posCli = -1;
+            }    
+
+            if(posCli >= 0){
+                txtConsulCli.setText(cadCliVend.get(posCli).getNome());
+                txtData.setEnabled(false);
+                txtCpfCli.setEnabled(false);
+                btnConsultaCli.setEnabled(false);
+                txtCpfVend.setEnabled(true);
+                btnConsultaVend.setEnabled(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente não cadastrado!", "aviso", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnConsultaCliActionPerformed
+
+    private void btnConsultaVendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaVendActionPerformed
+        String cpfVendedor = txtCpfVend.getText();
+        int x;
+        if(Pessoa.validarCPF(cpfVendedor)){
+        JOptionPane.showMessageDialog(null, "Número de CPF inválido", "aviso", JOptionPane.ERROR_MESSAGE);
+        }
+        else{      
+            for(x=0; x<cadCliVend.size(); x++){
+                if(cpfVendedor.equals(cadCliVend.get(x).getCpf())){
+                    if(cadCliVend.get(x) instanceof Vendedor){
+                        break;
+                    }else if(cadCliVend.get(x) instanceof Cliente){
+                        JOptionPane.showMessageDialog(null, "O número de cpf digitado pertence a um Cliente", "aviso", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
+            if(x < cadCliVend.size()){
+                posVend = x;
+            }else{
+                posVend = -1;
+            }    
+
+            if(posVend >= 0){
+                txtConsulVend.setText(cadCliVend.get(posVend).getNome());
+                txtCpfVend.setEnabled(false);
+                txtConsulVend.setEnabled(false);
+                txtCodProd.setEnabled(true);
+                btnConsultaProd.setEnabled(true);
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Vendedor não cadastrado!", "aviso", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btnConsultaVendActionPerformed
 
     /**
      * @param args the command line arguments
@@ -396,9 +515,9 @@ public class GuiEmitir extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Jpanel;
     private javax.swing.JButton btnAdicionarItem;
-    private javax.swing.JButton btnConsultaCpfCli;
-    private javax.swing.JButton btnConsultaCpfVend;
+    private javax.swing.JButton btnConsultaCli;
     private javax.swing.JButton btnConsultaProd;
+    private javax.swing.JButton btnConsultaVend;
     private javax.swing.JButton btnConsultarPedido;
     private javax.swing.JButton btnRemoverItem;
     private javax.swing.JButton btnSair;
@@ -417,18 +536,21 @@ public class GuiEmitir extends javax.swing.JFrame {
     private javax.swing.JLabel lblQtdeVend;
     private javax.swing.JLabel lvlVlrPedido;
     private javax.swing.JTable tblProduto;
-    private javax.swing.JFormattedTextField txCpfVend;
     private javax.swing.JFormattedTextField txtCodProd;
-    private javax.swing.JTextField txtConsultaCpfVend;
+    private javax.swing.JTextField txtConsulCli;
+    private javax.swing.JTextField txtConsulVend;
     private javax.swing.JTextField txtConsultaProd;
     private javax.swing.JFormattedTextField txtCpfCli;
+    private javax.swing.JFormattedTextField txtCpfVend;
     private javax.swing.JFormattedTextField txtData;
     private javax.swing.JTextField txtNumPedido;
     private javax.swing.JTextField txtQtdeItensPed;
     private javax.swing.JTextField txtQtdeVendProd;
-    private javax.swing.JTextField txtRCliConsul;
     private javax.swing.JTextField txtVlrPedido;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Pedido> cadPedido = new ArrayList<Pedido>();
      private ArrayList<Pessoa> cadCliVend = new ArrayList<Pessoa>();
+     int posCli;
+     int posVend;
+     int posPedido;
 }

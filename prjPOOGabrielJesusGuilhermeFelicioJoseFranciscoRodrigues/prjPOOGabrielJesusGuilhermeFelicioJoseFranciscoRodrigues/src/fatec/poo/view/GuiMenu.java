@@ -6,6 +6,7 @@
 package fatec.poo.view;
 
 import fatec.poo.model.Cliente;
+import fatec.poo.model.Pedido;
 import fatec.poo.model.Produto;
 import fatec.poo.model.Vendedor;
 import fatec.poo.model.Pessoa;
@@ -81,6 +82,11 @@ public class GuiMenu extends javax.swing.JFrame {
         jMenuPedido.setText("Pedido");
 
         jMenuItemEmitirPedido.setText("Emitir Pedido");
+        jMenuItemEmitirPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEmitirPedidoActionPerformed(evt);
+            }
+        });
         jMenuPedido.add(jMenuItemEmitirPedido);
 
         jMenuBarPrincipal.add(jMenuPedido);
@@ -112,6 +118,10 @@ public class GuiMenu extends javax.swing.JFrame {
     private void jMenuItemVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemVendedoresActionPerformed
         new GuiVendedor(cadCliVend).setVisible(true);
     }//GEN-LAST:event_jMenuItemVendedoresActionPerformed
+
+    private void jMenuItemEmitirPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirPedidoActionPerformed
+        new GuiEmitir(cadEmitir, cadCliVend).setVisible(true);
+    }//GEN-LAST:event_jMenuItemEmitirPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,4 +173,5 @@ public class GuiMenu extends javax.swing.JFrame {
     private ArrayList<Produto> cadProd = new ArrayList <Produto>();
     private ArrayList<Vendedor> cadVendedores = new ArrayList<Vendedor>();
     private ArrayList<Pessoa> cadCliVend = new ArrayList<Pessoa>();
+    private ArrayList<Pedido> cadEmitir = new ArrayList<Pedido>();
 }
