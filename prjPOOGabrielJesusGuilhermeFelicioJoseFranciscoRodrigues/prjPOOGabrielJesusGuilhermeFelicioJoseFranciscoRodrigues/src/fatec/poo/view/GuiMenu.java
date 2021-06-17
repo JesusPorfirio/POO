@@ -43,6 +43,7 @@ public class GuiMenu extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuPedido = new javax.swing.JMenu();
         jMenuItemEmitirPedido = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Vendas");
@@ -89,6 +90,14 @@ public class GuiMenu extends javax.swing.JFrame {
         });
         jMenuPedido.add(jMenuItemEmitirPedido);
 
+        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuPedido.add(jMenuItem1);
+
         jMenuBarPrincipal.add(jMenuPedido);
 
         setJMenuBar(jMenuBarPrincipal);
@@ -108,7 +117,7 @@ public class GuiMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClientesActionPerformed
-        new GuiCliente(cadClientes).setVisible(true);
+        new GuiCliente(cadCliVend).setVisible(true);
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
 
     private void jMenuItemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutosActionPerformed
@@ -120,8 +129,12 @@ public class GuiMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemVendedoresActionPerformed
 
     private void jMenuItemEmitirPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirPedidoActionPerformed
-        new GuiEmitir(cadEmitir, cadCliVend).setVisible(true);
+        new GuiEmitir(cadEmitir, cadCliVend, cadProd).setVisible(true);
     }//GEN-LAST:event_jMenuItemEmitirPedidoActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +174,7 @@ public class GuiMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBarPrincipal;
     private javax.swing.JMenu jMenuCadastros;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemClientes;
     private javax.swing.JMenuItem jMenuItemEmitirPedido;
     private javax.swing.JMenuItem jMenuItemProdutos;

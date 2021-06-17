@@ -6,7 +6,9 @@
 package fatec.poo.view;
 
 import fatec.poo.model.Cliente;
+import fatec.poo.model.Pessoa;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,8 +19,9 @@ public class GuiCliente extends javax.swing.JFrame {
     /**
      * Creates new form GuiCliente
      */
-    public GuiCliente(ArrayList<Cliente> cadClientes){
+    public GuiCliente(ArrayList<Pessoa> cadCliVend){
         initComponents();
+         cadastroP = cadCliVend;
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,6 +56,7 @@ public class GuiCliente extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         txtCpf = new javax.swing.JFormattedTextField();
+        cbxTipo = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro de Cliente");
@@ -96,6 +100,7 @@ public class GuiCliente extends javax.swing.JFrame {
 
         txtLimDis.setEnabled(false);
 
+        cbxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbxUf.setEnabled(false);
         cbxUf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,14 +119,29 @@ public class GuiCliente extends javax.swing.JFrame {
         btnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Inserir.png"))); // NOI18N
         btnIncluir.setText("Incluir");
         btnIncluir.setEnabled(false);
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Remover.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -136,6 +156,14 @@ public class GuiCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comum", "Especial" }));
+        cbxTipo.setEnabled(false);
+        cbxTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTipoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,7 +192,9 @@ public class GuiCliente extends javax.swing.JFrame {
                                         .addComponent(txtDDDTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(214, 214, 214)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblLimDisp)
@@ -228,7 +258,8 @@ public class GuiCliente extends javax.swing.JFrame {
                     .addComponent(lblCep)
                     .addComponent(txtDDDTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbxTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLimCredito)
@@ -261,8 +292,170 @@ public class GuiCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxUfActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        if (!Pessoa.validarCPF(txtCpf.getText())) {
+            JOptionPane.showMessageDialog(null, "CPF invalido!",
+                                        "Erro", JOptionPane.WARNING_MESSAGE);
+            txtCpf.requestFocus();
+        } else {
+            int x;
+            for (x = 0; x < cadastroP.size(); x++) {
+                if (cadastroP.get(x).getCpf().equals(txtCpf.getText())/* &&
+                        cadastroP.get(x) instanceof Cliente*/) {
+                    break;
+                }
+            }
+            
+            if (x < cadastroP.size()) {
+                posPessoa = x;
+            } else {
+                posPessoa = -1;
+            }
+            if (posPessoa >= 0) {                          
+                txtNome.setText(cadastroP.get(posPessoa).getNome());
+                txtEndereco.setText(cadastroP.get(posPessoa).getEndereco());
+                txtCidade.setText(cadastroP.get(posPessoa).getCidade());
+                cbxUf.setSelectedItem(cadastroP.get(posPessoa).getUf());
+                txtDDDTelefone.setText(cadastroP.get(posPessoa).getDdd());
+                txtTelefone.setText(cadastroP.get(posPessoa).getTelefon());
+                txtCep.setText(cadastroP.get(posPessoa).getCep());
+                txtLimCred.setText(String.valueOf(((Cliente)cadastroP.get(posPessoa)).getLimiteCred()));
+                txtLimDis.setText(String.valueOf(((Cliente)cadastroP.get(posPessoa)).getLimiteDisp()));
+                limiteUtilizado = ((Cliente)cadastroP.get(posPessoa)).getLimiteCred() - ((Cliente)cadastroP.get(posPessoa)).getLimiteDisp();
+                btnAlterar.setEnabled(true);
+                btnExcluir.setEnabled(true);
+                 cbxTipo.setEnabled(true);
+            } else {
+                btnIncluir.setEnabled(true);
+            }
+            btnConsultar.setEnabled(false);
+            txtCpf.setEnabled(false);
+            txtNome.setEnabled(true);
+            txtEndereco.setEnabled(true);
+            txtCidade.setEnabled(true);
+            cbxUf.setEnabled(true);
+            txtDDDTelefone.setEnabled(true);
+            txtTelefone.setEnabled(true);
+            txtCep.setEnabled(true);
+            txtLimCred.setEnabled(true);
+            txtNome.requestFocus();
+            
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void cbxTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTipoActionPerformed
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+        Cliente cliente = new Cliente(txtCpf.getText(),
+                                    txtNome.getText(),
+                                    Double.parseDouble(txtLimCred.getText()));
+        cliente.setEndereco(txtEndereco.getText());
+        cliente.setCidade(txtCidade.getText());
+        cliente.setUf(cbxUf.getSelectedItem().toString());
+        cliente.setCep(txtCep.getText());
+        cliente.setDdd(txtDDDTelefone.getText());
+        cliente.setTelefone(txtTelefone.getText());
+        if(cbxTipo.getSelectedIndex() == 0){
+            ((Cliente)cliente).setTipo("Comum");
+        }else if(cbxTipo.getSelectedIndex() == 1){
+            ((Cliente)cliente).setTipo("Especial");
+        }
+        
+        cadastroP.add(cliente);
+        
+        txtCpf.setValue(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(0);
+        txtDDDTelefone.setText(null);
+        txtTelefone.setText(null);
+        txtCep.setText(null);
+        txtLimCred.setText(null);
+        btnConsultar.setEnabled(true);
+        btnIncluir.setEnabled(false);
+        txtCpf.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDDDTelefone.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimCred.setEnabled(false);
+        txtCpf.requestFocus();
+        cbxTipo.setSelectedIndex(0);
+        cbxTipo.setEnabled(false);
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+       
+        if (posPessoa >= 0) {
+            cadastroP.remove(posPessoa);
+            posPessoa = -1;
+        }
+        txtCpf.setValue(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(0);
+        txtDDDTelefone.setText(null);
+        txtTelefone.setText(null);
+        txtCep.setText(null);
+        txtLimCred.setText(null);
+        lblLimDisp.setText(null);
+        btnConsultar.setEnabled(true);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        txtCpf.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDDDTelefone.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimCred.setEnabled(false);
+        txtCpf.requestFocus();
+    }//GEN-LAST:event_btnExcluirActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        // TODO add your handling code here:
+         cadastroP.get(posPessoa).setNome(txtNome.getText());
+        cadastroP.get(posPessoa).setEndereco(txtEndereco.getText());
+        cadastroP.get(posPessoa).setCidade(txtCidade.getText());
+        cadastroP.get(posPessoa).setUf(cbxUf.getSelectedItem().toString());
+        cadastroP.get(posPessoa).setDdd(txtDDDTelefone.getText());
+        cadastroP.get(posPessoa).setTelefone(txtTelefone.getText());
+        cadastroP.get(posPessoa).setCep(txtCep.getText());
+        ((Cliente)cadastroP.get(posPessoa)).setLimiteCred(Double.parseDouble(txtLimCred.getText()));
+        ((Cliente)cadastroP.get(posPessoa)).setLimiteDisp(Double.parseDouble(txtLimCred.getText()) - limiteUtilizado);
+        
+        txtCpf.setValue(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(0);
+        txtDDDTelefone.setText(null);
+        txtTelefone.setText(null);
+        txtCep.setText(null);
+        txtLimCred.setText(null);
+        txtLimDis.setText(null);
+        btnConsultar.setEnabled(true);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        txtCpf.setEnabled(true);
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDDDTelefone.setEnabled(false);
+        txtTelefone.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimCred.setEnabled(false);
+        txtCpf.requestFocus();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -271,6 +464,7 @@ public class GuiCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnSair;
+    private javax.swing.JComboBox<String> cbxTipo;
     private javax.swing.JComboBox<String> cbxUf;
     private javax.swing.JLabel lblCep;
     private javax.swing.JLabel lblCidade;
@@ -291,4 +485,7 @@ public class GuiCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTelefone;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<Pessoa> cadastroP = new ArrayList<Pessoa>();
+    private int posPessoa;
+    private double limiteUtilizado;
 }
