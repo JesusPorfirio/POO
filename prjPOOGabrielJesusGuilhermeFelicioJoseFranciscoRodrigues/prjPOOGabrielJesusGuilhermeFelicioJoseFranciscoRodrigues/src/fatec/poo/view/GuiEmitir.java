@@ -4,6 +4,7 @@ import fatec.poo.model.Cliente;
 import fatec.poo.model.ItemPedido;
 import fatec.poo.model.Pedido;
 import fatec.poo.model.Pessoa;
+import fatec.poo.model.Produto;
 import fatec.poo.model.Vendedor;
 import fatec.poo.model.Produto;
 import java.util.ArrayList;
@@ -19,11 +20,14 @@ public class GuiEmitir extends javax.swing.JFrame {
     /**
      * Creates new form GuiEmitirT
      */
-    public GuiEmitir(ArrayList<Pedido> cadPedido, ArrayList<Pessoa> cadCliVend) {
+    public GuiEmitir(ArrayList<Pedido> cadPedido, ArrayList<Pessoa> cadCliVend, ArrayList<Produto> cadProd) {
         initComponents();
         cadPedido = cadPedido;
-        cadCliVend = cadCliVend;
+
+        this.cadCliVend = cadCliVend;
         modTblProd = (DefaultTableModel)tblProduto.getModel();
+        this.cadProd = cadProd;
+        
     }
 
     /**
@@ -73,7 +77,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         btnAlterar = new javax.swing.JButton();
         btnIncluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Pedido"));
 
@@ -125,7 +129,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumPedido)
                     .addComponent(lblData)
@@ -133,8 +137,7 @@ public class GuiEmitir extends javax.swing.JFrame {
                     .addComponent(cbxFormaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultarPedido)
-                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icons/icon/Sair.png"))); // NOI18N
@@ -250,7 +253,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtConsultaProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -267,7 +270,7 @@ public class GuiEmitir extends javax.swing.JFrame {
                     .addComponent(btnRemoverItem))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -276,7 +279,8 @@ public class GuiEmitir extends javax.swing.JFrame {
                         .addGap(34, 34, 34))
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtQtdeItensPed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblQtdeItensPed))))
+                        .addComponent(lblQtdeItensPed)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados cliente"));
@@ -321,7 +325,7 @@ public class GuiEmitir extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtConsulCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -428,19 +432,19 @@ public class GuiEmitir extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Jpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSair)
                     .addComponent(btnExcluir)
                     .addComponent(btnAlterar)
                     .addComponent(btnIncluir))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Jpanel.getAccessibleContext().setAccessibleName("");
@@ -494,7 +498,7 @@ public class GuiEmitir extends javax.swing.JFrame {
     private void btnConsultaCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaCliActionPerformed
         String cpfCliente = txtCpfCli.getText();
         int x;
-        if(Pessoa.validarCPF(cpfCliente)){
+        if(!Pessoa.validarCPF(cpfCliente)){
         JOptionPane.showMessageDialog(null, "Número de CPF inválido", "aviso", JOptionPane.ERROR_MESSAGE);
         }
         else{      
@@ -509,6 +513,7 @@ public class GuiEmitir extends javax.swing.JFrame {
             }
             if(x < cadCliVend.size()){
                 posCli = x;
+                
             }else{
                 posCli = -1;
             }    
@@ -529,7 +534,7 @@ public class GuiEmitir extends javax.swing.JFrame {
     private void btnConsultaVendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaVendActionPerformed
         String cpfVendedor = txtCpfVend.getText();
         int x;
-        if(Pessoa.validarCPF(cpfVendedor)){
+        if(!Pessoa.validarCPF(cpfVendedor)){
         JOptionPane.showMessageDialog(null, "Número de CPF inválido", "aviso", JOptionPane.ERROR_MESSAGE);
         }
         else{      
@@ -567,96 +572,55 @@ public class GuiEmitir extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void txtDataFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDataFocusLost
-        int data = Integer.parseInt(txtData.getText());
+        int data = Integer.parseInt(txtData.getText().replaceAll("/", "")); // aceita apenas valores inteiro sem "/"
         int ano = data % 10000;
         int mes = (data/10000)% 100;
         int dia = data/1000000;
-                if( ano >= 1900 && ano <= 2100 && dia > 0 && dia <= 31 && mes > 0 && mes <=12){
-                    if((mes == 4 && dia >30)| (mes == 6 && dia >30)| (mes == 9 && dia >30)| (mes == 11 && dia >30)){
-                       JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
-                    }else{
-                       if((ano % 4 == 0 && mes == 2 && dia <= 29) | (ano % 4 != 0 && dia <=28)){
-                             Pedido pedido = new Pedido(txtNumPedido.getText(), txtData.getText());
-                            txtData.setEnabled(false);
-                            txtConsulCli.setEnabled(true);
-                            btnConsultaCli.setEnabled(true);
-                        }else{
-                           JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
-                       }
-                    }
+        if( ano >= 1900 && ano <= 2100 && dia > 0 && dia <= 31 && mes > 0 && mes <=12){
+            if((mes == 4 && dia >30)| (mes == 6 && dia >30)| (mes == 9 && dia >30)| (mes == 11 && dia >30)){
+                JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
+            }else{
+                if((ano % 4 == 0 && mes == 2 && dia <= 29) | (ano % 4 != 0 && dia <=28)){
+                    Pedido pedido = new Pedido(txtNumPedido.getText(), txtData.getText());
+                    txtData.setEnabled(false);
+                    txtCpfCli.setEnabled(true);
+                    btnConsultaCli.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
                 }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Digite uma data válida!", "aviso", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_txtDataFocusLost
 
     private void btnConsultaProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaProdActionPerformed
-        String codProduto = txtCodProd.getText();
-        int x;
-        for(x=0; x<cadProd.size(); x++){
-            if(cadProd.get(x).getCodigo().equals(codProduto)){
-                break;
-            }
-        }
-        
-        if(x < cadProd.size()){
-            posProd = x;
-        }else{
-            posProd = -1;
-        }
-        
-        if(posProd >= 0){
-            txtConsultaProd.setText(cadProd.get(x).getDescricao());
-            btnAdicionarItem.setEnabled(true);
-            btnRemoverItem.setEnabled(true);
-            txtQtdeVendProd.setEnabled(true);
-            txtCodProd.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(null, "Produto não cadastrado!", "aviso", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnConsultaProdActionPerformed
 
-    private void btnAdicionarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarItemActionPerformed
-        Double qtdVendida = Double.valueOf(txtQtdeVendProd.getText());
-        int x;
-        if(qtdVendida > 0){
+    int x;
             for(x=0; x<cadProd.size(); x++){
                 if(cadProd.get(x).getCodigo().equals(txtCodProd.getText())){
                     break;
                 }
             }
-            if(cadProd.get(x).getQtdeEstoque() >= qtdVendida){
-                ItemPedido novoItem = new ItemPedido(1, qtdVendida, cadProd.get(x));
-                for(x=0; x<cadCliVend.size(); x++){
-                    if(txtCpfCli.getText().equals(cadCliVend.get(x).getCpf())){
-                        if(cadCliVend.get(x) instanceof Cliente){
-                            break;
-                        }
-             
-                    }
-                }
-                Double valorItem = (novoItem.getProduto().getPreco()) * qtdVendida;
-                if(valorItem <= ((Cliente)cadCliVend.get(x)).getLimiteCred()){
-                    String listaItem [] = { (novoItem.getProduto().getCodigo()),
-                                             (novoItem.getProduto().getDescricao()),
-                                             String.valueOf((novoItem.getProduto().getPreco())),
-                                             txtQtdeVendProd.getText(),
-                                             String.valueOf(valorItem)};
-                    modTblProd.addRow(listaItem);
-                   
-                }
+            
+            if(x < cadProd.size()){
+                posProd = x;
             }else{
-                JOptionPane.showMessageDialog(null, "Quantidade solicitada maior que o estoque disponível", "aviso", JOptionPane.ERROR_MESSAGE);
+                posProd = -1;
+            }    
+            
+            if(posProd>=0){
+                txtConsultaProd.setText(cadProd.get(posVend).getDescricao());
+                txtQtdeVendProd.setEnabled(true);
+                btnAdicionarItem.setEnabled(true);
+                btnRemoverItem.setEnabled(true);
+            }else{
+                JOptionPane.showMessageDialog(null, "Digite um codigo de produto valido!", "aviso", JOptionPane.ERROR_MESSAGE);
             }
             
-        }else{
-            JOptionPane.showMessageDialog(null, "Favor inserir quantidade vendida válida", "aviso", JOptionPane.ERROR_MESSAGE);          
-        }
         
         
-        
-        
-    }//GEN-LAST:event_btnAdicionarItemActionPerformed
-
+    }                                               
 
     /**
      * @param args the command line arguments

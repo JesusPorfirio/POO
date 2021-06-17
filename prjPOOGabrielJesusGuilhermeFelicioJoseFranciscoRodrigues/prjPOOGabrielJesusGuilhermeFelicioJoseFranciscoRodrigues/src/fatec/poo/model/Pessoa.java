@@ -13,6 +13,14 @@ import java.util.InputMismatchException;
 public class Pessoa {
     private String cpf, nome, endereco, cidade, uf, cep, ddd, telefone;
 
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public Pessoa(String cpf, String nome) {
         this.cpf = cpf;
         this.nome = nome;
@@ -126,12 +134,12 @@ public class Pessoa {
         }
     }
 
-    public void setNome(String text) {
-        this.nome = nome;
-    }
-
     public String getDdd() {
         return ddd;
     }
-    
+
+    public String getTelefone() {
+        return telefone;
+    }
+
 }
