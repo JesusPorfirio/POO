@@ -599,15 +599,16 @@ public class GuiEmitir extends javax.swing.JFrame {
             }else{
                 posProd = -1;
             }    
-            
-            if(posProd>=0){
-                txtConsultaProd.setText(cadProd.get(posVend).getDescricao());
-                txtQtdeVendProd.setEnabled(true);
-                btnAdicionarItem.setEnabled(true);
-                btnRemoverItem.setEnabled(true);
+
+            if(posProd >= 0){
+               txtConsultaProd.setText(cadProd.get(posProd).getCodigo());
+               btnAdicionarItem.setEnabled(true);
+               btnRemoverItem.setEnabled(true);
+                
             }else{
-                JOptionPane.showMessageDialog(null, "Digite um codigo de produto valido!", "aviso", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Vendedor não cadastrado!", "aviso", JOptionPane.ERROR_MESSAGE);
             }
+            
             
         
         
